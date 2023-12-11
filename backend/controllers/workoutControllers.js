@@ -4,16 +4,10 @@ import mongoose from "mongoose";
 
 //* Get all workouts
 const getWorkouts = async (req, res) => {
-    const {user_id} = req.user._id
-    try {
+        const user_id = req.user._id;
         //? Sort by createdAt in descending order
-
         const workouts = await Workout.find({user_id}).sort({ createdAt: -1});
         res.status(200).json(workouts);
-
-    } catch (err) {
-        res.status(400).json({ error: err.message });
-    }
 }
 
 
@@ -39,7 +33,7 @@ const getWorkout = async (req, res) => {
 const createWorkout = async (req, res) => {
     const { title, reps, loads } = req.body;
     try {
-        const {user_id} = req.user._id;
+        const user_id = req.user._id;
 
         const workout = await Workout.create({ title, reps, loads, user_id });
     
@@ -54,6 +48,7 @@ const createWorkout = async (req, res) => {
 const deleteWorkout = async (req, res) => {
 
     const { id } = req.params;
+    console.log(id);
 
     if (!mongoose.Types.ObjectId.isValid(id)) {
         return res.status(404).json({ error: "No such workout"});
@@ -62,10 +57,10 @@ const deleteWorkout = async (req, res) => {
     const workout = await Workout.findByIdAndDelete({_id: id});
 
     if(!workout) {
-        return res.status(404).json({ error: `No workout with id: ${id}`});
+        return res.status(404).json({ error: 'No workout with id'});
     }
 
-    return res.status(200).json({ message: "Workout deleted successfully" });
+    res.status(200).json(workout);
 }
 
 

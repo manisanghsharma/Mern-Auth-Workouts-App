@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useSignup } from "../../hooks/useSignup";
+import { Link } from "react-router-dom";
 
 const Signup = () => {
 	const [email, setEmail] = useState("");
@@ -37,16 +38,26 @@ const Signup = () => {
 					id='pass'
 					className='outline-none rounded-md border-2 border-gray-200 p-2 w-[300px] focus:border-2 focus:border-black'
 				/>
-				<button
-                    disabled={loading}
-					type='submit'
-					className='rounded-md mt-2 px-3 py-2 text-white bg-green-600 hover:bg-green-700 transition-all'
-				>
-					Sign Up
-				</button>
-                {error && 
-				<div className="w-full text-center py-2 border-2 border-red-500 rounded-lg text-red-700 bg-red-100">{error}</div>
-				}
+				<div>
+					<button
+						disabled={loading}
+						type='submit'
+						className='rounded-md mt-2 px-3 py-2 text-white bg-green-600 hover:bg-green-700 transition-all'
+					>
+						Sign Up
+					</button>
+					<Link
+						to='/login'
+						className='ml-4 text-[17px] font-medium hover:text-green-600 transition-all'
+					>
+						Already a user? Login
+					</Link>
+				</div>
+				{error && (
+					<div className='w-full text-center py-2 border-2 border-red-500 rounded-lg text-red-700 bg-red-100'>
+						{error}
+					</div>
+				)}
 			</form>
 		</div>
 	);

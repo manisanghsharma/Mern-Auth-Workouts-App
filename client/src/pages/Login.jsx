@@ -1,5 +1,6 @@
 import { useState } from "react";
 import {useLogin} from '../../hooks/useLogin'
+import { Link } from "react-router-dom";
 
 const Login = () => {
     const [email, setEmail] = useState('')
@@ -37,13 +38,20 @@ const Login = () => {
 					id='pass'
 					className='outline-none rounded-md border-2 border-gray-200 p-2 w-[300px] focus:border-2 focus:border-black'
 				/>
-				<button
-					type='submit'
-					className='rounded-md mt-2 px-3 py-2 text-white bg-green-600 hover:bg-green-700 transition-all'
-					disabled={isLoading}
-				>
-					Log in
-				</button>
+				<div>
+					<button
+						type='submit'
+						className='rounded-md mt-2 px-3 py-2 text-white bg-green-600 hover:bg-green-700 transition-all'
+						disabled={isLoading}
+					>
+						Log in
+					</button>
+					<Link to='/signup' 
+						className='ml-4 text-lg font-medium hover:text-green-600 transition-all'>
+						New here? Signup
+					</Link>
+				</div>
+
 				{error && (
 					<div className='w-full text-center py-2 border-2 border-red-500 rounded-lg text-red-700 bg-red-100'>
 						{error}

@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useWorkoutsContext } from "../../hooks/useWorkoutsContext";
+import { Link, useNavigate } from "react-router-dom";
 
-const NewWorkout = () => {
+const NewMobile = () => {
+    const navigate = useNavigate();
 	const [title, setTitle] = useState("");
 	const [loads, setLoads] = useState("");
 	const [reps, setReps] = useState("");
@@ -34,13 +36,13 @@ const NewWorkout = () => {
 			setError(json.error);
 		}
 		if (response.ok) {
-			setTitle("");
+            setTitle("");
 			setLoads("");
 			setReps("");
 			setError(null);
 			dispatch({ type: "CREATE_WORKOUT", payload: json });
+            navigate('/')
 		}
-
 	};
 
 	return (
@@ -74,7 +76,10 @@ const NewWorkout = () => {
 					value={reps}
 					onChange={(e) => setReps(e.target.value)}
 				/>
-					<button className='mt-5 bg-green-600 hover:bg-green-700 transition text-white px-10 py-3 rounded-md font-semibold'>
+
+					<button
+						className='mt-5 bg-green-600 hover:bg-green-700 transition text-white px-10 py-3 rounded-md font-semibold'
+					>
 						Add Workout
 					</button>
 				{error && (
@@ -86,4 +91,4 @@ const NewWorkout = () => {
 		</div>
 	);
 };
-export default NewWorkout;
+export default NewMobile;
