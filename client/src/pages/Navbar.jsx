@@ -2,8 +2,9 @@ import { Link } from "react-router-dom";
 import { useLogout } from "../../hooks/useLogout";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { PlusSquare, LogOut } from "react-feather";
-
+import useWindowSize from '../../hooks/useWindowSize'
 const Navbar = () => {
+	const {width} = useWindowSize();
 	const { user } = useAuthContext();
 	const { logout } = useLogout();
 	const handleLogout = () => {
@@ -13,7 +14,7 @@ const Navbar = () => {
 	return (
 		<header
 			className=' w-full h-[100px] bg-white flex items-center'
-			style={{ justifyContent: !user ? "center" : "space-between" }}
+			style={{ justifyContent: width<=550 ? "center" : "space-between" }}
 		>
 			<Link to={"/"}>
 				<h1 className='font-bold text-[30px] mx-7 text-[#313232] lg:ml-24 md:text-4xl md:mx-10 max-sm:text-[24px] flex items-center'
