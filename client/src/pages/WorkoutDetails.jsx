@@ -4,7 +4,7 @@ import formatDistanceToNow from "date-fns/formatDistanceToNow";
 
 const WorkoutDetails = ({workout}) => {
   return (
-    <div className="bg-white px-10 mt-10 rounded-md py-3 relative">
+    <div className="bg-white px-6 mt-6 rounded-md py-3 relative md:px-10 md:mt-10">
       <h4 className="mb-2 text-2xl font-bold text-[#23A881]">{workout.title}</h4>
       <p className="text-xl">
         <strong>Load (kg): </strong>

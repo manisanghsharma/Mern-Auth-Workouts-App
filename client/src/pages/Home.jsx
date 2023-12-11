@@ -10,7 +10,7 @@ const Home = () => {
 
     useEffect(() => {
          const fetchWorkouts = async () => {
-						const response = await fetch("http://localhost:4000/api/workouts", {
+						const response = await fetch("/api/workouts", {
 							headers: { Authorization: `Bearer ${user.token}` },
 						});
 						const json = await response.json();
@@ -25,7 +25,7 @@ const Home = () => {
         }
     }, [dispatch, user]);
   return (
-    <div className="w-full px-10 grid grid-cols-[3fr,1fr] gap-12 lg:px-24 lg:gap-24">
+    <div className="w-full px-6 grid grid-cols-[3fr,1fr] gap-12 lg:px-24 lg:gap-24 md:px-10">
 
         <div className="max-md:col-span-2">
           {workouts && workouts.map((workout) => (

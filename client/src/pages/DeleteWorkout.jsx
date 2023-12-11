@@ -10,7 +10,7 @@ const DeleteWorkout = ({workout}) => {
 				return;
 			}   
 
-			const response = await fetch("http://localhost:4000/api/workouts/" + workout._id, {
+			const response = await fetch("/api/workouts/" + workout._id, {
 				method: "DELETE",
 				headers: {
 					Authorization: `Bearer ${user.token}`,
@@ -27,7 +27,7 @@ const DeleteWorkout = ({workout}) => {
   return (
 		<div
 			onClick={deleteWorkout}
-			className='flex items-center justify-center absolute top-5 right-7 cursor-pointer p-[10px] rounded-full hover:bg-[#ededed] transition-all'
+			className='flex items-center justify-center absolute top-2 right-2 cursor-pointer p-[10px] rounded-full hover:bg-[#ededed] transition-all sm:top-3 sm:right-7'
 		>
 			<Trash2 size={25} />
 		</div>
