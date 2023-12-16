@@ -13,13 +13,13 @@ const Navbar = () => {
 
 	return (
 		<header
-			className=' w-full h-[100px] bg-white flex items-center'
-			style={{ justifyContent: width<=550 ? "center" : "space-between" }}
+			className=' w-full h-[100px] bg-white flex items-center justify-between'
+			style={{justifyContent: width <= 550 && !user && "center"}}
 		>
 			<Link to={"/"}>
-				<h1 className='font-bold text-[30px] mx-7 text-[#313232] lg:ml-24 md:text-4xl md:mx-10 max-sm:text-[24px] flex items-center'
+				<h1 className='font-bold text-[30px] mx-7 text-[#313232] lg:ml-24 md:text-4xl md:mx-10 max-sm:text-[24px] flex items-center justify-start'
 				style={{fontSize: !user && "30px"}}>
-					Workout Buddy{" "}
+					{width > 400 && "Workout Buddy"}
 					<img className='w-10 ml-1 md:w-16 md:ml-3' src='assets/dumbell.png' />
 				</h1>
 			</Link>

@@ -10,12 +10,15 @@ const DeleteWorkout = ({workout}) => {
 				return;
 			}   
 
-			const response = await fetch("/api/workouts/" + workout._id, {
-				method: "DELETE",
-				headers: {
-					Authorization: `Bearer ${user.token}`,
+			const response = await fetch(
+				"https://workout-buddy-mern.onrender.com/api/workouts/" + workout._id,
+				{
+					method: "DELETE",
+					headers: {
+						Authorization: `Bearer ${user.token}`,
+					},
 				}
-			});
+			);
 
 			const json = await response.json();
 
